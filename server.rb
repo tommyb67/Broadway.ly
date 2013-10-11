@@ -1,11 +1,20 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_record'
-require_relative 'config/environments'
+require 'pry'
+#require_relative 'config/environments'
 require_relative 'models/song'
 require_relative 'models/show'
 
+ActiveRecord::Base.establish_connection(
+:adapter => 'postgresql',
+:host => 'localhost',
+:username => 'thomasbrennan',
+:password => '',
+:database => 'broadway_db'
+)
 
+binding.pry
 
 after do
   ActiveRecord::Base.clear_active_connections!
