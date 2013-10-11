@@ -1,9 +1,21 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'active_record'
+require_relative 'config/environments'
+require_relative 'models/song'
+require_relative 'models/show'
+
+
+
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
 
 # Welcome to Broadway.ly!
 
 get "/" do
+  erb :index
 end
 
 # Index of all shows
