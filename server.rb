@@ -16,7 +16,7 @@ ActiveRecord::Base.establish_connection(
 :database => 'broadway_db'
 )
 
-#binding.pry
+binding.pry
 
 # after do
 #   ActiveRecord::Base.clear_active_connections!
@@ -47,7 +47,8 @@ end
 # show
 
 post "/shows" do
-
+  show = Show.create(params[:title, :year, :composer, :img_url])
+  redirect '/shows'
 end
 
 # Individual show page
