@@ -1,7 +1,9 @@
+#require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_record'
 require 'pry'
+#require 'haml'
 #require_relative 'config/environments'
 require_relative 'models/song'
 require_relative 'models/show'
@@ -14,11 +16,11 @@ ActiveRecord::Base.establish_connection(
 :database => 'broadway_db'
 )
 
-binding.pry
+#binding.pry
 
-after do
-  ActiveRecord::Base.clear_active_connections!
-end
+# after do
+#   ActiveRecord::Base.clear_active_connections!
+# end
 
 
 # Welcome to Broadway.ly!
@@ -31,6 +33,8 @@ end
 # with links to individual shows
 
 get "/shows" do
+  @shows = Show.all
+  erb :"shows/index"
 end
 
 # Form to create new show
