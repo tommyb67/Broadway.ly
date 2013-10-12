@@ -1,0 +1,20 @@
+<h3>Please add a Broadway Show</h3>
+<form action="/shows/new" method="POST">
+  <div>
+    <label>Show Title:</label>
+    <input value='<%= @show['title'] if @show %>' type="text" name="show[title]" />
+  </div>
+  <div>
+    <label>Debut Year:</label>
+    <input value='<%= @show['year'] if @show %>' type="text" name="show[year]" />
+  </div>
+  <div>
+    <label>Composer:</label>
+    <input value='<%= @show['composer'] if @show %>' type="text" name="show[composer]" />
+  </div>
+  <div>
+    <label>Image URL:</label>
+    <input value='<%= @show['img_url'] if @show %>' type="text" name="show[img_url]" />
+  </div>
+  <button>Submit</button>
+</form>

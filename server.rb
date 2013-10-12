@@ -40,12 +40,14 @@ end
 # Form to create new show
 
 get "/shows/new" do
+  erb :"shows/new"
 end
 
 # Create action - new show - redirects to that
 # show
 
 post "/shows" do
+
 end
 
 # Individual show page
