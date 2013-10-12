@@ -16,7 +16,11 @@ ActiveRecord::Base.establish_connection(
 :database => 'broadway_db'
 )
 
-binding.pry
+after do
+  ActiveRecord::Base.clear_active_connections!
+end
+
+#binding.pry
 
 # after do
 #   ActiveRecord::Base.clear_active_connections!
@@ -47,7 +51,8 @@ end
 # show
 
 post "/shows" do
-  show = Show.create(params[:title, :year, :composer, :img_url])
+  show = Show.new(params[:show])
+  show.save
   redirect '/shows'
 end
 
@@ -56,6 +61,7 @@ end
 # and form to create new songs `/shows/:id/songs/new`
 
 get "/shows/:id" do
+  @show = Entry.find(params[:id])
 end
 
 # Form to create new songs
