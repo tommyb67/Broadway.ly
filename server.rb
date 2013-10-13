@@ -52,9 +52,9 @@ end
 # show
 
 post "/shows" do
-  show = Show.new(params[:id])
+  show = Show.new(params[:show])
   show.save
-  redirect '/shows/:id'
+  redirect '/shows'
 end
 
 # Individual show page
@@ -65,6 +65,8 @@ get "/shows/:show_id" do
   @show = Show.find(params[:show_id])
   erb :"shows/show"
 end
+
+#binding.pry
 
 # Form to create new songs
 
