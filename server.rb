@@ -66,6 +66,8 @@ get "/shows/:show_id" do
   erb :"shows/show"
 end
 
+binding.pry
+
 # Form to create new songs
 
 get "/shows/:id/songs/new" do
