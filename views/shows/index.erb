@@ -1,7 +1,7 @@
 <h1>All of your Broadway Favorites!</h1>
 <%  @shows.each do |show| %>
 
- <h3>Show: <a href="<% show.id %>"><%= show.title %></a></h3>
+ <h3>Show: <a href="<%="/shows/#{show.id}" %>"><%= show.title %></a></h3>
  <p>Year: <% show.id %><%= show.year %></p>
  <p>Composer: <a href="<% show.id %>"><%= show.composer %></a></p>
 

@@ -3,7 +3,6 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'active_record'
 require 'pry'
-#require 'haml'
 #require_relative 'config/environments'
 require_relative 'models/song'
 require_relative 'models/show'
@@ -16,11 +15,13 @@ ActiveRecord::Base.establish_connection(
 :database => 'broadway_db'
 )
 
+#binding.pry
+
 after do
   ActiveRecord::Base.clear_active_connections!
 end
 
-#binding.pry
+
 
 # after do
 #   ActiveRecord::Base.clear_active_connections!
@@ -51,17 +52,18 @@ end
 # show
 
 post "/shows" do
-  show = Show.new(params[:show])
+  show = Show.new(params[:id])
   show.save
-  redirect '/shows'
+  redirect '/shows/:id'
 end
 
 # Individual show page
 # Links to list of all songs `/shows/:id/songs`
 # and form to create new songs `/shows/:id/songs/new`
 
-get "/shows/:id" do
-  @show = Entry.find(params[:id])
+get "/shows/:show_id" do
+  @show = Show.find(params[:show_id])
+  erb :"shows/show"
 end
 
 # Form to create new songs

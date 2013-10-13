@@ -1,0 +1,6 @@
+<h1>All of your Favorite Broadway Songs!</h1>
+<%  @songs.each do |song| %>
+
+ <h3>Song: <a href="<% song.id %>"><%= song.title %></a></h3>
+
+ <% end %>
